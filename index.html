@@ -551,31 +551,7 @@ pre{background:var(--bg);border:1px solid var(--border);border-radius:10px;
     </div>
   </div>
 
-  <!-- GUIDE -->
-  <div class="slabel" style="margin-top:18px;">Panduan Setup Google Sheets</div>
-  <div class="guide">
-    <h4>⚙️ Cara Menghubungkan Google Sheets ke Dashboard ini</h4>
-    <ol>
-      <li>Buka spreadsheet data audit Anda di <a href="https://sheets.google.com" target="_blank" style="color:var(--sky)">sheets.google.com</a></li>
-      <li>Klik <strong>File → Share → Publish to web</strong> → pilih sheet → format <code>CSV</code> → klik <strong>Publish</strong></li>
-      <li>Salin URL yang diberikan (berformat <code>…/pub?gid=0&single=true&output=csv</code>)</li>
-      <li>Tempelkan URL tersebut di kolom koneksi di bagian atas halaman ini → klik <strong>Muat</strong></li>
-      <li>Dashboard akan otomatis membaca dan menampilkan semua data</li>
-    </ol>
-    <p style="font-size:12px;color:var(--text3);margin-top:10px;">💡 Alternatif: Deploy Google Apps Script sebagai Web App dan gunakan endpoint JSON-nya. Kode Apps Script untuk endpoint:</p>
-    <pre>function doGet(e) {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  const rows  = sheet.getDataRange().getValues();
-  const keys  = rows[0];
-  const data  = rows.slice(1).map(r => {
-    const obj = {};
-    keys.forEach((k,i) => obj[k] = r[i]);
-    return obj;
-  });
-  return ContentService
-    .createTextOutput(JSON.stringify(data))
-    .setMimeType(ContentService.MimeType.JSON);
-}</pre>
+  
   </div>
 
   <div class="lu" id="lu">—</div>
